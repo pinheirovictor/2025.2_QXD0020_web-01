@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo Unindo Grid, Flexbox e Posicionamento</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ---------------- GRID: Estrutura principal ---------------- */
+    .container {
+      display: grid; /* Ativa o Grid */
+      grid-template-areas:
+        "header header"   /* Linha 1 → Header ocupa 2 colunas */
+        "sidebar main"    /* Linha 2 → Sidebar + Main */
+        "footer footer";  /* Linha 3 → Footer ocupa 2 colunas */
+      grid-template-columns: 200px 1fr; /* Sidebar fixa e Main flexível */
+      grid-template-rows: 60px auto 60px; /* Alturas: header 60px, main automático, footer 60px */
+      height: 100vh; /* Ocupa altura total da tela */
+    }
+
+    .header {
+      grid-area: header; /* Associa à área "header" do grid */
+      background: #4a90e2;
+      color: white;
+
+      /* FLEXBOX dentro do header */
+      display: flex; 
+      justify-content: space-between; /* Espaço entre título e menu */
+      align-items: center; /* Alinha verticalmente no centro */
+      padding: 0 20px;
+
+      /* POSICIONAMENTO sticky */
+      position: sticky;
+      top: 0; /* Gruda no topo ao rolar */
+      z-index: 10; /* Garante que fica acima de outros elementos */
+    }
+
+    .sidebar {
+      grid-area: sidebar; /* Área lateral esquerda */
+      background: #f4f4f4;
+      padding: 15px;
+      position: relative; /* Importante para servir de referência a filhos "absolute" */
+    }
+
+    .main {
+      grid-area: main; /* Área de conteúdo principal */
+      padding: 20px;
+      overflow-y: auto; /* Permite rolagem se o conteúdo for muito grande */
+    }
+
+    .footer {
+      grid-area: footer; /* Área do rodapé */
+      background: #333;
+      color: white;
+      text-align: center;
+      line-height: 60px; /* Centraliza o texto verticalmente */
+    }
+
+    /* ---------------- FLEXBOX no menu ---------------- */
+    .nav {
+      display: flex; /* Coloca links lado a lado */
+      gap: 15px; /* Espaço entre os links */
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav a:hover {
+      text-decoration: underline; /* Destaque no hover */
+    }
+
+    /* ---------------- FLEXBOX em cards ---------------- */
+    .cards {
+      display: flex; /* Alinha cards na horizontal */
+      gap: 20px; /* Espaço entre os cards */
+      flex-wrap: wrap; /* Permite quebrar linha se faltar espaço */
+      margin-top: 20px;
+    }
+
+    .card {
+      flex: 1 1 200px; /* Cresce, encolhe e tem largura mínima de 200px */
+      background: lightblue;
+      padding: 20px;
+      border: 2px solid #000;
+      text-align: center;
+
+      /* POSICIONAMENTO relativo para servir de base ao badge absoluto */
+      position: relative;
+    }
+
+    .badge {
+      /* POSICIONAMENTO absoluto → sempre no canto do card */
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: crimson;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 50%; /* Formato circular */
+      font-size: 12px;
+    }
+
+    /* ---------------- BOTÃO FIXO ---------------- */
+    .fixed-button {
+      position: fixed; /* Sempre fixo na tela, mesmo rolando */
+      bottom: 20px; /* Distância da borda inferior */
+      right: 20px; /* Distância da borda direita */
+      background: orange;
+      padding: 15px 20px;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* Sombra para destaque */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- HEADER (usando Grid + Flexbox + sticky) -->
+    <header class="header">
+      <h1>Minha Página</h1>
+      <nav class="nav">
+        <a href="#">Início</a>
+        <a href="#">Sobre</a>
+        <a href="#">Contato</a>
+      </nav>
+    </header>
+
+    <!-- SIDEBAR (usando Grid) -->
+    <aside class="sidebar">
+      <h3>Menu Lateral</h3>
+      <ul>
+        <li>Item A</li>
+        <li>Item B</li>
+        <li>Item C</li>
+      </ul>
+    </aside>
+
+    <!-- MAIN (conteúdo + cards com Flexbox e badge absoluto) -->
+    <main class="main">
+      <h2>Conteúdo Principal</h2>
+      <p>Esta página combina Grid (estrutura), Flexbox (alinhamentos) e Posicionamento (absolute, sticky, fixed).</p>
+
+      <div class="cards">
+        <div class="card">
+          Card 1
+          <div class="badge">Novo</div> <!-- Badge com position absolute -->
+        </div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>
+      </div>
+    </main>
+
+    <!-- FOOTER (usando Grid) -->
+    <footer class="footer">
+      © 2025 - Exemplo Grid + Flexbox + Posicionamento
+    </footer>
+  </div>
+
+  <!-- BOTÃO FIXO (sempre visível na tela) -->
+  <button class="fixed-button">Ajuda</button>
+
+</body>
+</html>

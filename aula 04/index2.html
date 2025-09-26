@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo Flexbox</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.5;
+    }
+
+    h1, h2 {
+      margin-top: 40px;
+    }
+
+    .container {
+      display: flex;
+      border: 2px solid #333;
+      margin-bottom: 20px;
+      padding: 10px;
+      min-height: 120px;
+    }
+
+    .item {
+      background: lightblue;
+      border: 1px solid #000;
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* Direções */
+    .row {
+      flex-direction: row;
+    }
+
+    .column {
+      flex-direction: column;
+    }
+
+    /* Justify-content */
+    .space-between {
+      justify-content: space-between;
+    }
+
+    .center {
+      justify-content: center;
+    }
+
+    /* Align-items */
+    .align-start {
+      align-items: flex-start;
+    }
+
+    .align-center {
+      align-items: center;
+    }
+
+    .align-end {
+      align-items: flex-end;
+    }
+
+    /* Flex-grow */
+    .grow-1 {
+      flex: 1;
+    }
+
+    .grow-2 {
+      flex: 2;
+    }
+
+    /* Flex-wrap */
+    .wrap {
+      flex-wrap: wrap;
+    }
+
+    .item-wrap {
+      width: 150px;
+    }
+
+    /* Order */
+    .order1 { order: 1; }
+    .order2 { order: 2; }
+    .order3 { order: 3; }
+
+    /* Align-self */
+    .align-self {
+      align-self: flex-end;
+      background: lightcoral;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Exemplos de Flexbox</h1>
+
+  <h2>1. Flex Direction (row)</h2>
+  <div class="container row">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+  </div>
+
+  <h2>2. Flex Direction (column)</h2>
+  <div class="container column">
+    <div class="item">Item A</div>
+    <div class="item">Item B</div>
+    <div class="item">Item C</div>
+  </div>
+
+  <h2>3. Justify Content (space-between)</h2>
+  <div class="container row space-between">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+  <h2>4. Align Items (center)</h2>
+  <div class="container row align-center" style="height:150px;">
+    <div class="item">Alto</div>
+    <div class="item" style="height:80px;">Médio</div>
+    <div class="item" style="height:40px;">Baixo</div>
+  </div>
+
+  <h2>5. Flex Grow (ocupando espaço proporcional)</h2>
+  <div class="container row">
+    <div class="item grow-1">Flex 1</div>
+    <div class="item grow-2">Flex 2</div>
+    <div class="item grow-1">Flex 1</div>
+  </div>
+
+  <h2>6. Flex Wrap</h2>
+  <div class="container row wrap">
+    <div class="item item-wrap">Box 1</div>
+    <div class="item item-wrap">Box 2</div>
+    <div class="item item-wrap">Box 3</div>
+    <div class="item item-wrap">Box 4</div>
+    <div class="item item-wrap">Box 5</div>
+  </div>
+
+  <h2>7. Order (mudando a ordem visual)</h2>
+  <div class="container row">
+    <div class="item order3">Ordem 3</div>
+    <div class="item order1">Ordem 1</div>
+    <div class="item order2">Ordem 2</div>
+  </div>
+
+  <h2>8. Align Self (sobrescrevendo align-items)</h2>
+  <div class="container row align-start" style="height:150px;">
+    <div class="item">Normal</div>
+    <div class="item align-self">Align Self</div>
+    <div class="item">Normal</div>
+  </div>
+
+</body>
+</html>

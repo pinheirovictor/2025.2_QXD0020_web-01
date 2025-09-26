@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplos de Posicionamento em CSS</title>
+  <style>
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      margin: 20px;
+    }
+
+    .container {
+      margin: 20px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      min-height: 250px;
+      position: relative;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background: lightblue;
+      border: 2px solid #333;
+      text-align: center;
+      line-height: 100px;
+      font-weight: bold;
+    }
+
+    /* STATIC */
+    .static {
+      position: static;
+      background: lightgreen;
+    }
+
+    /* RELATIVE */
+    .relative {
+      position: relative;
+      top: 20px;
+      left: 30px;
+      background: lightsalmon;
+    }
+
+    /* ABSOLUTE */
+    .absolute {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: plum;
+    }
+
+    /* FIXED */
+    .fixed {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: tomato;
+      z-index: 1000;
+    }
+
+    /* STICKY */
+    .sticky {
+      position: sticky;
+      top: 0;
+      background: gold;
+      padding: 10px;
+      border: 2px solid #333;
+    }
+
+    /* Demonstração de z-index */
+    .overlap-container {
+      position: relative;
+      height: 200px;
+    }
+
+    .box1 {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      background: cornflowerblue;
+      z-index: 1;
+    }
+
+    .box2 {
+      position: absolute;
+      top: 60px;
+      left: 60px;
+      background: lightcoral;
+      z-index: 2;
+    }
+
+    /* Demonstração de overflow */
+    .overflow {
+      width: 200px;
+      height: 100px;
+      border: 2px solid #333;
+      overflow: auto;
+      padding: 5px;
+    } */
+  </style>
+</head>
+<body>
+
+  <h1>Exemplos de Posicionamento em CSS</h1>
+
+  <h2>1. Static (padrão)</h2>
+  <div class="container">
+    <div class="box static">Static</div>
+    <p>Segue o fluxo normal da página.</p>
+  </div>
+
+  <h2>2. Relative</h2>
+  <div class="container">
+    <div class="box relative">Relative</div>
+    <p>Movida em relação à sua posição original.</p>
+  </div>
+
+  <h2>3. Absolute</h2>
+  <div class="container">
+    <div class="box absolute">Absolute</div>
+    <p>Posicionada em relação ao ancestral posicionado.</p>
+  </div>
+
+  <h2>4. Fixed</h2>
+  <p>Role a página para ver o elemento fixo no canto inferior direito.</p>
+  <div class="box fixed">Fixed</div>
+
+  <h2>5. Sticky</h2>
+  <div class="container" style="height:300px; overflow:auto;">
+    <div class="sticky">Sou Sticky</div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis nulla ut lectus lacinia, ac cursus leo porta.</p>
+    <p>Role dentro deste container e veja o sticky se manter no topo.</p>
+    <p>Mais texto de exemplo... Mais texto de exemplo... Mais texto de exemplo...</p>
+    <p>Mais texto de exemplo... Mais texto de exemplo... Mais texto de exemplo...</p>
+  </div>
+
+  <h2>6. Z-index (sobreposição)</h2>
+  <div class="overlap-container">
+    <div class="box box1">Z=1</div>
+    <div class="box box2">Z=2</div>
+  </div>
+
+  <h2>7. Overflow</h2>
+  <div class="overflow">
+    Este texto é longo e vai ultrapassar a altura do box. O CSS overflow: auto permite que o conteúdo fique rolável quando excede o espaço definido.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis.
+  </div>
+
+  <p style="height: 500px;"></p>
+
+</body>
+</html>
