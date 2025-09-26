@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentos da Web - CSS3 (I)</title>
+  <style>
+    /* ---------- Seletores ---------- */
+    body { /* seletor de elemento */
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+
+    h1 { /* seletor de elemento */
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .destaque { /* seletor de classe */
+      color: #e74c3c;
+      font-weight: bold;
+    }
+
+    #caixa { /* seletor de ID */
+      border: 2px solid #2c3e50;
+      padding: 20px;
+      margin: 20px 0;
+      background-color: white;
+      width: 300px;
+    }
+
+    /* ---------- Box Model ---------- */
+    .box {
+      border: 2px dashed #3498db;   /* borda */
+      padding: 15px;                /* espaço interno */
+      margin: 10px 0;               /* espaço externo */
+      width: 200px;
+      background-color: #ecf0f1;
+    }
+
+    /* ---------- Cores e Fontes ---------- */
+    p {
+      color: #34495e; /* cor da fonte */
+      font-size: 16px;
+      line-height: 1.5; /* espaçamento entre linhas */
+    }
+
+    .colorida {
+      color: #8e44ad;
+      font-family: 'Courier New', monospace; /* outra fonte */
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS3: Seletores, Box Model, Cores e Fontes</h1>
+
+  <section>
+    <h2>Seletores</h2>
+    <p>Este texto está em <span class="destaque">destaque</span> usando uma <code>classe</code>.</p>
+    <p id="caixa">Este parágrafo tem um estilo aplicado por um <code>ID</code>.</p>
+  </section>
+
+  <section>
+    <h2>Box Model</h2>
+    <div class="box">Sou uma caixa com padding, margin e border.</div>
+    <div class="box">Outra caixa para visualizar o box model.</div>
+  </section>
+
+  <section>
+    <h2>Cores e Fontes</h2>
+    <p>O CSS permite usar <span class="colorida">cores e diferentes fontes</span> para personalizar o texto.</p>
+  </section>
+</body>
+</html>
