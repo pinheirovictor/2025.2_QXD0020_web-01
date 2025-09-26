@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<!--
+  <!DOCTYPE html> indica ao navegador que este documento usa HTML5.
+  Isso ajuda a renderizar com o modo de padrões modernos (standards mode).
+-->
+<html lang="pt-BR">
+<head>
+  <!--
+    <meta charset="utf-8"> define a codificação do documento (UTF-8),
+    necessária para acentos e caracteres especiais em português.
+  -->
+  <meta charset="utf-8">
+
+  <!--
+    <title> define o título da aba/janela do navegador.
+  -->
+  <title>QXD0020 — HTML5 (II) — Site sem CSS</title>
+
+  <!--
+    <meta name="viewport"> ajuda na responsividade em dispositivos móveis.
+    width=device-width: usa a largura real do dispositivo.
+    initial-scale=1: não aplica zoom inicial.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <!--
+    Link de "pular para o conteúdo principal" (Skip link).
+    Acessibilidade: permite que usuários de teclado/leitores de tela
+    acessem rapidamente o conteúdo, evitando repetir o menu.
+    accesskey="k": atalho de teclado (Alt+K na maioria dos navegadores no Windows).
+  -->
+  <a href="#conteudo" accesskey="k">Ir para o conteúdo principal (AccessKey: K)</a>
+
+  <!-- ========================= HEADER + NAV ========================= -->
+  <!--
+    <header> é um container semântico para o cabeçalho da página ou seção.
+  -->
+  <header>
+    <!--
+      <h1> deve ser usado para o título principal da página.
+      Idealmente, apenas um <h1> por documento.
+    -->
+    <h1>QXD0020 — Desenvolvimento de Software para Web</h1>
+
+    <!--
+      Parágrafo descritivo do conteúdo da página.
+    -->
+    <p>HTML5 (II): semântica, listas, tabelas, formulários, multimídia</p>
+
+    <!--
+      <nav> delimita uma área de navegação (menu principal).
+      aria-label: rótulo acessível descrevendo o propósito da nav.
+    -->
+    <nav aria-label="Menu principal">
+      <!--
+        Colocamos um <h2> dentro da nav para fornecer um título semântico
+        para tecnologias assistivas (opcional, porém útil).
+      -->
+      <h2>Menu</h2>
+
+      <!--
+        Lista NÃO ordenada de links de navegação.
+        Cada <a> aponta para um id de seção abaixo (âncoras internas).
+        tabindex: define ordem personalizada na navegação por Tab.
+        accesskey: fornece atalhos de teclado (Alt+S, Alt+L, etc.).
+      -->
+      <ul>
+        <li><a href="#semantica" accesskey="s" tabindex="1" title="Semântica (Alt+S)">Semântica</a></li>
+        <li><a href="#listas" accesskey="l" tabindex="2" title="Listas (Alt+L)">Listas</a></li>
+        <li><a href="#links" accesskey="n" tabindex="3" title="Links/Âncoras (Alt+N)">Links</a></li>
+        <li><a href="#divspan" accesskey="d" tabindex="4" title="Divs e Spans (Alt+D)">Divs e Spans</a></li>
+        <li><a href="#tabelas" accesskey="t" tabindex="5" title="Tabelas (Alt+T)">Tabelas</a></li>
+        <li><a href="#form" accesskey="f" tabindex="6" title="Formulários (Alt+F)">Formulários</a></li>
+        <li><a href="#midia" accesskey="m" tabindex="7" title="Multimídia (Alt+M)">Multimídia</a></li>
+        <li><a href="#validacao" accesskey="v" tabindex="8" title="Validadores (Alt+V)">Validadores</a></li>
+      </ul>
+
+      <!--
+        Dica textual sobre como usar os atalhos de teclado.
+        (Em macOS, alguns navegadores pedem Ctrl/Shift + Alt + tecla)
+      -->
+      <p>Atalhos: Alt + S/L/N/D/T/F/M/V/K (em alguns navegadores: Ctrl/Shift + Alt + tecla).</p>
+    </nav>
+  </header>
+
+  <!-- ========================= CONTEÚDO PRINCIPAL ========================= -->
+  <!--
+    <main> delimita o conteúdo principal do documento.
+    Deve existir APENAS UM <main> por página.
+    id="conteudo" é o alvo do skip link lá do topo.
+  -->
+  <main id="conteudo">
+
+    <!-- ============ 1) HTML SEMÂNTICO ============ -->
+    <!--
+      <section> agrupa um bloco temático de conteúdo, com título próprio (<h2>).
+      aria-labelledby aponta para o id do título da seção, melhorando acessibilidade.
+    -->
+    <section id="semantica" aria-labelledby="ttl-semantica">
+      <h2 id="ttl-semantica">HTML Semântico</h2>
+
+      <!--
+        Texto introdutório reforçando o conceito.
+      -->
+      <p>Semântica é dar significado à estrutura. Ajuda acessibilidade, SEO e manutenção.</p>
+
+      <!--
+        <article> representa um conteúdo independente (ex.: post, notícia ou,
+        como aqui, um bloco que poderia fazer sentido isoladamente).
+      -->
+      <article aria-labelledby="art-tags">
+        <h3 id="art-tags">Tags principais</h3>
+
+        <!--
+          Lista das principais tags semânticas do HTML5.
+          Note o uso de <code> para destacar código inline.
+        -->
+        <ul>
+          <li><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code></li>
+          <li><code>&lt;figure&gt;</code> + <code>&lt;figcaption&gt;</code>, <code>&lt;time&gt;</code>, <code>&lt;mark&gt;</code></li>
+        </ul>
+
+        <!--
+          <figure> agrupa conteúdo de mídia (imagem/diagrama/etc.)
+          com uma legenda em <figcaption>.
+        -->
+        <figure>
+          <!--
+            <img> SEMPRE deve ter alt descritivo para acessibilidade.
+            width/height ajudam performance e estabilidade de layout.
+            Substitua o caminho conforme sua pasta de imagens.
+          -->
+          <img src="img/smiley.png" alt="Ícone de rosto sorridente" width="96" height="96">
+          <figcaption>Figura 1 — Exemplo de <code>figure</code> com legenda.</figcaption>
+        </figure>
+
+        <!--
+          <time datetime="AAAA-MM-DD"> fornece a data em formato legível por máquinas.
+          <mark> destaca um trecho relevante de texto.
+        -->
+        <p>
+          Hoje é <time datetime="2025-09-18">18 de setembro de 2025</time>.
+          Este é um <mark>texto destacado</mark> usando <code>&lt;mark&gt;</code>.
+        </p>
+      </article>
+    </section>
+
+    <!-- ============ 2) LISTAS ============ -->
+    <section id="listas" aria-labelledby="ttl-listas">
+      <h2 id="ttl-listas">Listas (UL, OL e DL)</h2>
+
+      <article>
+        <!-- Lista não ordenada -->
+        <h3>Lista não ordenada (UL)</h3>
+        <ul>
+          <li>Café</li>
+          <li>Chá</li>
+          <li>Leite</li>
+        </ul>
+
+        <!-- Lista ordenada padrão -->
+        <h3>Lista ordenada (OL)</h3>
+        <ol>
+          <li>Primeiro</li>
+          <li>Segundo</li>
+          <li>Terceiro</li>
+        </ol>
+
+        <!-- Lista ordenada iniciando em 50 -->
+        <h4>Lista ordenada iniciando em 50</h4>
+        <ol start="50">
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+        </ol>
+
+        <!-- Lista de definição: termos (<dt>) e descrições (<dd>) -->
+        <h3>Lista de definição (DL)</h3>
+        <dl>
+          <dt>HTML</dt>
+          <dd>Linguagem de marcação para a Web.</dd>
+          <dt>CSS</dt>
+          <dd>Folhas de estilo em cascata.</dd>
+          <dt>JavaScript</dt>
+          <dd>Linguagem de programação para a Web.</dd>
+        </dl>
+      </article>
+    </section>
+
+    <!-- ============ 3) LINKS E ÂNCORAS ============ -->
+    <section id="links" aria-labelledby="ttl-links">
+      <h2 id="ttl-links">Links (âncoras) e âncoras internas</h2>
+
+      <article>
+        <!-- Link externo abre em nova aba; rel="noopener" é boa prática de segurança -->
+        <h3>Link externo</h3>
+        <p>Visite o site da <a href="https://www.ufc.br" target="_blank" rel="noopener">UFC</a>.</p>
+
+        <!-- Âncora interna: o link aponta para o próprio id (#topo-exemplo) -->
+        <h3 id="topo-exemplo">Âncora interna</h3>
+        <p>Este é o topo desta subseção.</p>
+        <p><a href="#topo-exemplo">Voltar ao topo desta subseção</a></p>
+
+        <!-- accesskey cria atalhos; title ajuda a explicar a função -->
+        <h3>Atalhos com <code>accesskey</code></h3>
+        <p>
+          <a href="#form" accesskey="f" title="Ir direto ao formulário (Alt+F)">Ir ao formulário (AccessKey: F)</a> |
+          <a href="#tabelas" accesskey="t" title="Ir direto às tabelas (Alt+T)">Ir às tabelas (AccessKey: T)</a>
+        </p>
+      </article>
+    </section>
+
+    <!-- ============ 4) DIV e SPAN ============ -->
+    <section id="divspan" aria-labelledby="ttl-divspan">
+      <h2 id="ttl-divspan">Divs e Spans — Containers Genéricos</h2>
+
+      <article>
+        <h3>Exemplos simples</h3>
+
+        <!--
+          <div> é um container genérico de BLOCO.
+          <span> é um container genérico de LINHA (inline).
+          Aqui não há CSS, mas normalmente são usados para agrupar e estilizar.
+        -->
+        <div>
+          <p>Este parágrafo está dentro de uma <code>&lt;div&gt;</code> (bloco).</p>
+          <p>Texto com <span>um <code>&lt;span&gt;</code> (em linha)</span> no meio.</p>
+        </div>
+
+        <!--
+          <pre> preserva a formatação do texto (quebras de linha, espaços).
+          Útil para mostrar trechos de código no slide/aula.
+        -->
+        <pre>
+&lt;div&gt;Seção em bloco&lt;/div&gt;
+&lt;span&gt;Trecho em linha&lt;/span&gt;
+        </pre>
+      </article>
+    </section>
+
+    <!-- ============ 5) TABELAS ============ -->
+    <section id="tabelas" aria-labelledby="ttl-tabelas">
+      <h2 id="ttl-tabelas">Tabelas</h2>
+
+      <article>
+        <!--
+          <table> com <caption> (título da tabela), <thead>, <tbody> e <tfoot>.
+          scope="col"/"row" melhora acessibilidade ao indicar escopo do cabeçalho.
+        -->
+        <table>
+          <caption>Economias Mensais</caption>
+          <thead>
+            <tr>
+              <th scope="col">Mês</th>
+              <th scope="col">Poupança</th>
+              <th scope="col">Observação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <!--
+                scope="row" indica que esta célula cabeçalho descreve a linha inteira.
+              -->
+              <th scope="row">Janeiro</th>
+              <td>R$ 100</td>
+              <!--
+                rowspan="2": esta célula ocupa verticalmente duas linhas.
+              -->
+              <td rowspan="2">Período promocional</td>
+            </tr>
+            <tr>
+              <th scope="row">Fevereiro</th>
+              <td>R$ 80</td>
+            </tr>
+            <tr>
+              <!--
+                colspan="2": célula ocupa duas colunas (largura).
+              -->
+              <td colspan="2">Total (Jan–Fev)</td>
+              <td>R$ 180</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Meta anual</td>
+              <td colspan="2">R$ 1.200</td>
+            </tr>
+          </tfoot>
+        </table>
+      </article>
+    </section>
+
+    <!-- ============ 6) FORMULÁRIOS ============ -->
+    <section id="form" aria-labelledby="ttl-form">
+      <h2 id="ttl-form">Formulários</h2>
+
+      <article>
+        <!--
+          <form> com método GET (para fins didáticos).
+          tabindex="0" permite focar o formulário como bloco via Tab.
+          aria-describedby aponta para um texto auxiliar.
+          autocomplete="on" (padrão) permitiria sugestões do navegador.
+        -->
+        <form action="#" method="get" tabindex="0" aria-describedby="ajuda-form" autocomplete="on">
+          <!-- Texto de ajuda referenciado por aria-describedby -->
+          <p id="ajuda-form">Use Tab para navegar. Alguns campos têm <code>tabindex</code> definido.</p>
+
+          <!--
+            <fieldset> agrupa controles relacionados; <legend> dá um título ao grupo.
+          -->
+          <fieldset>
+            <legend>Dados pessoais</legend>
+
+            <!--
+              <label for="id"> conecta a label ao controle, melhorando acessibilidade.
+              accesskey="n": atalho de teclado (Alt+N).
+              required: torna o campo obrigatório.
+              autocomplete="given-name"/"family-name": dicas de autocompletar semânticas.
+            -->
+            <label for="first" accesskey="n">Nome (AccessKey: N)</label><br>
+            <input id="first" name="firstName" type="text" placeholder="Maria" required tabindex="1" autocomplete="given-name"><br><br>
+
+            <label for="last">Sobrenome</label><br>
+            <input id="last" name="lastName" type="text" placeholder="Silva" tabindex="2" autocomplete="family-name"><br><br>
+
+            <label for="email">E-mail</label><br>
+            <input id="email" name="email" type="email" placeholder="nome@exemplo.com" required tabindex="3" autocomplete="email"><br><br>
+
+            <!--
+              Grupo de radios: mesmo name="gender" para formar o grupo.
+              Cada <label> aponta para o id do radio correspondente.
+            -->
+            <p>Gênero</p>
+            <label for="male">Masculino</label>
+            <input type="radio" name="gender" id="male" value="M">
+            <label for="female">Feminino</label>
+            <input type="radio" name="gender" id="female" value="F">
+          </fieldset>
+
+          <fieldset>
+            <legend>Preferências</legend>
+
+            <!--
+              <select> com <optgroup> para agrupar opções.
+              tabindex define ordem de foco.
+            -->
+            <label for="car">Carro preferido</label><br>
+            <select id="car" name="car" tabindex="4">
+              <optgroup label="Suecos">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+              </optgroup>
+              <optgroup label="Alemães">
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+              </optgroup>
+            </select><br><br>
+
+            <!--
+              <textarea> para textos longos; rows/cols só influenciam visual sem CSS.
+            -->
+            <label for="about">Sobre você</label><br>
+            <textarea id="about" name="about" rows="4" cols="50" placeholder="Conte algo interessante…" tabindex="5"></textarea><br><br>
+
+            <!--
+              type="url" valida formato de URL.
+              pattern aplica regex simples (começar com http:// ou https://).
+              title mostra dica caso a validação falhe.
+              autocomplete="url" sugere histórico de URLs.
+            -->
+            <label for="site">Seu site (regex simples)</label><br>
+            <input
+              id="site"
+              name="site"
+              type="url"
+              placeholder="https://exemplo.com"
+              pattern="https?://.+"
+              title="Comece com http:// ou https://"
+              tabindex="6"
+              autocomplete="url">
+          </fieldset>
+
+          <!-- Botões do formulário. A ordem de Tab continua a partir do 7. -->
+          <p>
+            <button type="submit" tabindex="7">Enviar</button>
+            <button type="reset" tabindex="8">Limpar</button>
+          </p>
+        </form>
+
+        <!--
+          Bloco <pre> com um resumo do esqueleto de formulário para estudo/slide.
+        -->
+        <pre>
+&lt;form&gt;
+  &lt;label for="email"&gt;E-mail&lt;/label&gt;
+  &lt;input id="email" type="email" required&gt;
+  &lt;select&gt;...&lt;/select&gt;
+  &lt;textarea&gt;...&lt;/textarea&gt;
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+        </pre>
+      </article>
+    </section>
+
+    <!-- ============ 7) MULTIMÍDIA ============ -->
+    <section id="midia" aria-labelledby="ttl-midia">
+      <h2 id="ttl-midia">Multimídia</h2>
+
+      <article>
+        <!-- Imagem simples com alt descritivo -->
+        <h3>Imagem simples</h3>
+        <img src="img/centro-distribuicao.png" alt="Centro de distribuição da Mirror Fashion" width="480">
+
+        <!-- Figure + Figcaption para legenda de mídia -->
+        <h3>Figure + Figcaption</h3>
+        <figure>
+          <img src="img/paisagem.jpg" alt="Paisagem ao pôr do sol" width="480">
+          <figcaption>Paisagem ao pôr do sol — exemplo com legenda.</figcaption>
+        </figure>
+
+        <!-- Áudio com <source>. O texto interno aparece se o browser não suportar -->
+        <h3>Áudio</h3>
+        <audio controls>
+          <source src="media/audio.mp3" type="audio/mpeg">
+          Seu navegador não suporta o elemento <code>audio</code>.
+        </audio>
+
+        <!-- Vídeo com poster (imagem de capa enquanto não reproduz) -->
+        <h3>Vídeo</h3>
+        <video controls width="480" poster="img/poster.png">
+          <source src="media/video.mp4" type="video/mp4">
+          Seu navegador não suporta o elemento <code>video</code>.
+        </video>
+      </article>
+    </section>
+
+    <!-- ============ 8) VALIDADORES ============ -->
+    <section id="validacao" aria-labelledby="ttl-validacao">
+      <h2 id="ttl-validacao">Validadores (W3C)</h2>
+
+      <!--
+        Links para os validadores oficiais do W3C.
+        Dica de atividade: submeter esta página e corrigir erros/avisos.
+      -->
+      <ul>
+        <li><a href="https://validator.w3.org/" target="_blank" rel="noopener">Validador HTML do W3C</a></li>
+        <li><a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">Validador CSS do W3C</a></li>
+      </ul>
+      <p>Exercício: valide esta página no W3C e corrija eventuais avisos.</p>
+    </section>
+  </main>
+
+  <!-- ========================= ASIDE (COMPLEMENTO) ========================= -->
+  <!--
+    <aside> contém informações complementares (não essenciais) ao conteúdo principal.
+  -->
+  <aside aria-label="Notas laterais">
+    <h2>Boas práticas</h2>
+    <ol>
+      <li>Use <code>&lt;main&gt;</code> apenas uma vez por página.</li>
+      <li>Inclua atributo <code>alt</code> em todas as imagens.</li>
+      <li>Relacione <code>&lt;label&gt;</code> com o atributo <code>for</code> do campo.</li>
+      <li>Use <code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code> também dentro de seções quando fizer sentido.</li>
+    </ol>
+  </aside>
+
+  <!-- ========================= FOOTER ========================= -->
+  <!--
+    <footer> delimita o rodapé da página. Pode conter contatos, direitos autorais,
+    navegação secundária etc. <address> é apropriado para informações de contato.
+  -->
+  <footer>
+    <h2>Contato</h2>
+    <address>
+      Universidade Federal do Ceará — Campus Quixadá<br>
+      QXD0020 — Prof. Francisco Victor da Silva Pinheiro —
+      <a href="mailto:victorpinheiro@ufc.br">victorpinheiro@ufc.br</a>
+    </address>
+    <p>Este exemplo demonstra: semântica, listas, links/âncoras, DIV/SPAN, tabelas (com <code>caption</code> e <code>scope</code>), formulários (labels, fieldsets), multimídia, <code>accesskey</code> e <code>tabindex</code> — tudo sem CSS.</p>
+  </footer>
+
+</body>
+</html>

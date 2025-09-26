@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>QXD0020 — Portal da Aula: HTML5 (II)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Estilo mínimo apenas para visualização didática -->
+  <style>
+    :root { --bg:#f7f7fb; --ink:#222; --muted:#666; --brand:#1e88e5; --card:#fff; --line:#e5e7eb; }
+    * { box-sizing: border-box; }
+    body { margin:0; font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial; color:var(--ink); background:var(--bg); }
+    a { color:var(--brand); }
+    header, nav, main, aside, footer { padding: 16px; }
+    header, footer { background: var(--card); border-bottom:1px solid var(--line); }
+    footer { border-top:1px solid var(--line); border-bottom:none; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    nav ul { display:flex; gap:12px; list-style: none; padding:0; margin:8px 0 0; flex-wrap: wrap; }
+    nav a { text-decoration: none; padding:6px 10px; border-radius:8px; }
+    nav a:focus, nav a:hover { outline: 2px dashed var(--brand); outline-offset: 2px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 960px) { .grid { grid-template-columns: 3fr 1fr; } }
+    section, article, aside { background: var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
+    h1, h2, h3 { line-height:1.2; margin: 0.5em 0; }
+    code, pre { background:#0b1020; color:#f2f5ff; padding:2px 6px; border-radius:6px; }
+    pre { padding:10px; overflow:auto; }
+    figure { margin:0; }
+    figcaption { color:var(--muted); font-size:0.9rem; margin-top:6px; }
+    table { border-collapse: collapse; width: 100%; }
+    caption { text-align:left; font-weight:600; margin-bottom:8px; }
+    th, td { border:1px solid var(--line); padding:8px; text-align:left; }
+    thead th { background:#f2f4f7; }
+    tfoot td { background:#f9fafb; font-weight:600; }
+    .kbd { font: 0.95rem/1.1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#eef2ff; border:1px solid #c7d2fe; border-bottom-width:3px; padding:2px 6px; border-radius:6px; }
+    .pill { display:inline-block; padding:2px 8px; border:1px solid var(--line); border-radius:999px; font-size:0.85rem; color:#555; background:#fafafa; }
+    .muted { color:var(--muted); }
+    .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus { position:static; width:auto; height:auto; background:#fff8c5; padding:8px; border-radius:8px; }
+    .demo-inline { border:1px dashed #d1d5db; padding:8px; border-radius:8px; }
+  </style>
+</head>
+<body>
+  <!-- Link de pular para o conteúdo principal (acessibilidade) -->
+  <a href="#conteudo" class="skip" accesskey="k">Ir para o conteúdo principal (AccessKey: K)</a>
+
+  <!-- HEADER semântico -->
+  <header class="container" role="banner">
+    <h1>QXD0020 — Desenvolvimento de Software para Web</h1>
+    <p class="muted">HTML5 (II): semântica, listas, tabelas, formulários, multimídia</p>
+
+    <!-- NAV semântico com accesskeys e tabindex -->
+    <nav aria-label="Menu principal">
+      <ul>
+        <li><a href="#semantica" accesskey="s" tabindex="1" title="Ir para Semântica (Alt+S)">Semântica</a></li>
+        <li><a href="#listas" accesskey="l" tabindex="2" title="Ir para Listas (Alt+L)">Listas</a></li>
+        <li><a href="#links" accesskey="n" tabindex="3" title="Ir para Links/Âncoras (Alt+N)">Links</a></li>
+        <li><a href="#divspan" accesskey="d" tabindex="4" title="Ir para Div/Span (Alt+D)">Divs &amp; Spans</a></li>
+        <li><a href="#tabelas" accesskey="t" tabindex="5" title="Ir para Tabelas (Alt+T)">Tabelas</a></li>
+        <li><a href="#form" accesskey="f" tabindex="6" title="Ir para Formulários (Alt+F)">Formulários</a></li>
+        <li><a href="#midia" accesskey="m" tabindex="7" title="Ir para Multimídia (Alt+M)">Multimídia</a></li>
+        <li><a href="#validacao" accesskey="v" tabindex="8" title="Ir para Validadores (Alt+V)">Validadores</a></li>
+      </ul>
+      <p class="muted">
+        Dicas: Use <span class="kbd">Alt + S/L/N/D/T/F/M/V</span> (ou <span class="kbd">Ctrl/Shift + Alt + tecla</span> no macOS) para atalhos de navegação.  
+        Ordem de <em>Tab</em> personalizada com <code>tabindex</code>.
+      </p>
+    </nav>
+  </header>
+
+  <!-- LAYOUT principal -->
+  <div class="container grid" id="conteudo" role="main">
+    <main>
+      <!-- 1) HTML SEMÂNTICO -->
+      <section id="semantica" aria-labelledby="ttl-semantica">
+        <h2 id="ttl-semantica">HTML Semântico</h2>
+        <p>
+          Semântica é dar <strong>significado</strong> à estrutura do documento.  
+          Isso melhora <em>acessibilidade</em>, <em>SEO</em>, manutenção e segue padrões do W3C.
+        </p>
+
+        <article aria-labelledby="art-tags">
+          <h3 id="art-tags">Tags principais</h3>
+          <ul>
+            <li><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code></li>
+            <li><code>&lt;figure&gt;</code> + <code>&lt;figcaption&gt;</code>, <code>&lt;time&gt;</code>, <code>&lt;mark&gt;</code></li>
+          </ul>
+
+          <!-- Exemplo figure/figcaption + img -->
+          <figure>
+            <!-- Substitua o src pela sua imagem local -->
+            <img src="img/smiley.png" alt="Rosto sorridente amarelo" width="96" height="96" />
+            <figcaption>Figura 1 — Exemplo de <code>&lt;figure&gt;</code> com legenda.</figcaption>
+          </figure>
+
+          <p>
+            Hoje é <time datetime="2025-09-18">18 de setembro de 2025</time>.  
+            Este texto contém um <mark>destaque semântico</mark>.
+          </p>
+        </article>
+      </section>
+
+      <!-- 2) LISTAS -->
+      <section id="listas" aria-labelledby="ttl-listas">
+        <h2 id="ttl-listas">Listas (UL, OL e DL)</h2>
+
+        <article>
+          <h3>Não ordenada (<code>&lt;ul&gt;</code>)</h3>
+          <ul>
+            <li>Café</li>
+            <li>Chá</li>
+            <li>Leite</li>
+          </ul>
+
+          <h3>Ordenada (<code>&lt;ol&gt;</code>)</h3>
+          <ol>
+            <li>Primeiro</li>
+            <li>Segundo</li>
+            <li>Terceiro</li>
+          </ol>
+
+          <h4>Ordenada iniciando de 50</h4>
+          <ol start="50">
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Milk</li>
+          </ol>
+
+          <h3>Definição (<code>&lt;dl&gt;</code>)</h3>
+          <dl>
+            <dt>HTML</dt>
+            <dd>Linguagem de marcação para a Web.</dd>
+            <dt>CSS</dt>
+            <dd>Folhas de estilo em cascata.</dd>
+            <dt>JS</dt>
+            <dd>Linguagem de programação para a Web.</dd>
+          </dl>
+        </article>
+      </section>
+
+      <!-- 3) LINKS E ÂNCORAS -->
+      <section id="links" aria-labelledby="ttl-links">
+        <h2 id="ttl-links">Links (âncoras) e âncoras internas</h2>
+
+        <article>
+          <h3>Links externos</h3>
+          <p>
+            Visite o site da <a href="https://www.ufc.br" target="_blank" rel="noopener">UFC</a>.
+          </p>
+
+          <h3 id="topo-exemplo">Âncora interna</h3>
+          <p>Há um link ao final para voltar ao topo desta seção.</p>
+          <p class="muted">… conteúdo omitido …</p>
+          <p><a href="#topo-exemplo">Voltar ao topo desta seção</a></p>
+
+          <h3>AccessKey em links</h3>
+          <p>
+            <a href="#form" accesskey="f" title="Ir direto ao formulário (Alt+F)">Ir ao formulário (AccessKey: F)</a> ·
+            <a href="#tabelas" accesskey="t" title="Ir direto às tabelas (Alt+T)">Ir às tabelas (AccessKey: T)</a>
+          </p>
+        </article>
+      </section>
+
+      <!-- 4) DIVS e SPANS -->
+      <section id="divspan" aria-labelledby="ttl-divspan">
+        <h2 id="ttl-divspan">Divs e Spans — Containers Genéricos</h2>
+
+        <article>
+          <h3><code>&lt;div&gt;</code> (bloco) e <code>&lt;span&gt;</code> (linha)</h3>
+          <div class="demo-inline">
+            <p>Este é um <strong>parágrafo</strong> dentro de uma <code>&lt;div&gt;</code> (bloco).</p>
+            <p>Texto com <span style="color:darkgreen;font-weight:bold">um <code>&lt;span&gt;</code> estilizado</span> no meio.</p>
+          </div>
+
+<pre><code>&lt;div&gt;A block-level section in a document&lt;/div&gt;
+&lt;span&gt;An inline section in a document&lt;/span&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- 5) TABELAS -->
+      <section id="tabelas" aria-labelledby="ttl-tabelas">
+        <h2 id="ttl-tabelas">Tabelas</h2>
+
+        <article>
+          <table aria-describedby="tb-desc">
+            <caption>Economias Mensais (exemplo com <code>thead</code>, <code>tbody</code>, <code>tfoot</code>)</caption>
+            <thead>
+              <tr>
+                <th>Mês</th>
+                <th>Poupança</th>
+                <th>Observação</th>
+              </tr>
+            </thead>
+            <tbody id="tb-desc">
+              <tr>
+                <td>Janeiro</td>
+                <td>R$ 100</td>
+                <td rowspan="2">Período promocional</td>
+              </tr>
+              <tr>
+                <td>Fevereiro</td>
+                <td>R$ 80</td>
+              </tr>
+              <tr>
+                <td colspan="2">Total acumulado (Jan–Fev)</td>
+                <td>R$ 180</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Meta anual</td>
+                <td colspan="2">R$ 1.200</td>
+              </tr>
+            </tfoot>
+          </table>
+        </article>
+      </section>
+
+      <!-- 6) FORMULÁRIOS -->
+      <section id="form" aria-labelledby="ttl-form">
+        <h2 id="ttl-form">Formulários</h2>
+
+        <article>
+          <!-- Demonstração de label/for, fieldset/legend, select/optgroup, textarea, required, pattern -->
+          <form action="#" method="get" tabindex="0" aria-describedby="form-help">
+            <p id="form-help" class="muted">Use Tab para navegar; alguns campos têm <code>tabindex</code> específico.</p>
+
+            <fieldset>
+              <legend>Dados pessoais</legend>
+
+              <label for="first" accesskey="n">Nome (AccessKey: N)</label><br />
+              <input id="first" name="firstName" type="text" placeholder="Maria" required tabindex="1" />
+              <br /><br />
+
+              <label for="last">Sobrenome</label><br />
+              <input id="last" name="lastName" type="text" placeholder="Silva" tabindex="2" />
+              <br /><br />
+
+              <label for="email">E-mail</label><br />
+              <input id="email" name="email" type="email" placeholder="nome@exemplo.com" required tabindex="3" />
+              <br /><br />
+
+              <span class="pill">Exemplo ARIA</span>
+              <div role="group" aria-labelledby="ttl-genero" tabindex="-1">
+                <p id="ttl-genero"><strong>Gênero</strong></p>
+                <label for="male">Masculino</label>
+                <input type="radio" name="gender" id="male" value="M" />
+                <label for="female">Feminino</label>
+                <input type="radio" name="gender" id="female" value="F" />
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Preferências</legend>
+
+              <label for="car">Carro preferido</label><br />
+              <select id="car" name="car" tabindex="4">
+                <optgroup label="Suecos">
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                </optgroup>
+                <optgroup label="Alemães">
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </optgroup>
+              </select>
+              <br /><br />
+
+              <label for="about">Sobre você</label><br />
+              <textarea id="about" name="about" rows="4" cols="50" placeholder="Conte algo interessante…" tabindex="5"></textarea>
+              <br /><br />
+
+              <label for="site">Seu site (regex simples)</label><br />
+              <input id="site" name="site" type="url" placeholder="https://exemplo.com"
+                     pattern="https?://.+" title="Comece com http:// ou https://" tabindex="6" />
+            </fieldset>
+
+            <br />
+            <button type="submit" tabindex="7">Enviar</button>
+            <button type="reset" tabindex="8">Limpar</button>
+          </form>
+
+<pre><code>&lt;form&gt;
+  &lt;label for="email"&gt;E-mail&lt;/label&gt;
+  &lt;input id="email" type="email" required /&gt;
+  &lt;select&gt;...&lt;/select&gt;
+  &lt;textarea&gt;...&lt;/textarea&gt;
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- 7) MULTIMÍDIA -->
+      <section id="midia" aria-labelledby="ttl-midia">
+        <h2 id="ttl-midia">Multimídia (imagens, áudio, vídeo)</h2>
+
+        <article>
+          <h3>Imagem simples</h3>
+          <!-- Substitua pelo seu arquivo local, mantenha alt descritivo -->
+          <img src="img/centro-distribuicao.png" alt="Centro de distribuição da Mirror Fashion" width="480" />
+
+          <h3>Figure + Figcaption</h3>
+          <figure>
+            <img src="img/paisagem.jpg" alt="Paisagem ao pôr do sol" width="480" />
+            <figcaption>Paisagem ao pôr do sol — exemplo com legenda.</figcaption>
+          </figure>
+
+          <h3>Áudio</h3>
+          <!-- Substitua 'media/audio.mp3' por um arquivo real -->
+          <audio controls>
+            <source src="media/audio.mp3" type="audio/mpeg" />
+            Seu navegador não suporta o elemento <code>audio</code>.
+          </audio>
+
+          <h3>Vídeo</h3>
+          <!-- Substitua 'media/video.mp4' por um arquivo real -->
+          <video controls width="480" poster="img/poster.png">
+            <source src="media/video.mp4" type="video/mp4" />
+            Seu navegador não suporta o elemento <code>video</code>.
+          </video>
+        </article>
+      </section>
+
+      <!-- 8) VALIDADORES -->
+      <section id="validacao" aria-labelledby="ttl-validacao">
+        <h2 id="ttl-validacao">Validadores (W3C)</h2>
+        <ul>
+          <li><a href="https://validator.w3.org/" target="_blank" rel="noopener">Validador HTML do W3C</a></li>
+          <li><a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">Validador CSS do W3C</a></li>
+        </ul>
+        <p class="muted">Sugestão de prática: peça aos alunos para validarem esta página e corrigirem avisos/erros.</p>
+      </section>
+    </main>
+
+    <!-- ASIDE: conteúdo complementar -->
+    <aside aria-label="Notas laterais e atalhos">
+      <h3>Atalhos &amp; Tabindex</h3>
+      <ul>
+        <li><span class="kbd">Alt + K</span> pular para o conteúdo</li>
+        <li><span class="kbd">Alt + S</span> Semântica</li>
+        <li><span class="kbd">Alt + L</span> Listas</li>
+        <li><span class="kbd">Alt + T</span> Tabelas</li>
+        <li><span class="kbd">Alt + F</span> Formulários</li>
+        <li><span class="kbd">Alt + M</span> Multimídia</li>
+        <li><span class="kbd">Alt + V</span> Validadores</li>
+      </ul>
+
+      <h3>Boas práticas</h3>
+      <ol>
+        <li>Use <code>&lt;main&gt;</code> uma vez por página.</li>
+        <li>Mantenha <code>alt</code> descritivo em imagens.</li>
+        <li>Relacione <code>&lt;label&gt;</code> com <code>for</code>.</li>
+        <li>Use <code>&lt;header&gt;</code>/<code>&lt;footer&gt;</code> também dentro de seções/artigos quando fizer sentido.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <!-- FOOTER semântico -->
+  <footer class="container" role="contentinfo">
+    <p><strong>Universidade Federal do Ceará — Campus Quixadá</strong></p>
+    <p>QXD0020 — Prof. Francisco Victor da Silva Pinheiro — <a href="mailto:victorpinheiro@ufc.br">victorpinheiro@ufc.br</a></p>
+    <p class="muted">Este exemplo demonstra: semântica, listas (UL/OL/DL), links/âncoras, DIV/SPAN, tabelas (rowspan/colspan), formulários (label, fieldset, select/optgroup, textarea), multimídia (img/figure, audio, video), <code>accesskey</code> e <code>tabindex</code>.</p>
+  </footer>
+</body>
+</html>
