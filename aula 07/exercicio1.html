@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Notas de Alunos</title>
+
+  <style>
+    /* ===== ESTILO GERAL ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2b2b52;
+    }
+
+    /* ===== FORMULÁRIO ===== */
+    .form-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+      width: 150px;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #4a69bd;
+      color: white;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #3b4cca;
+    }
+
+    /* ===== TABELA ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    /* Linhas coloridas conforme situação */
+    tr.aprovado {
+      background-color: #d4edda; /* verde claro */
+    }
+
+    tr.reprovado {
+      background-color: #f8d7da; /* vermelho claro */
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+
+    /* ===== RODAPÉ ===== */
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Controle de Notas de Alunos</h1>
+
+  <!-- ===== FORMULÁRIO DE ENTRADA ===== -->
+  <div class="form-container">
+    <input type="text" id="nome" placeholder="Nome do aluno">
+    <input type="number" id="nota1" placeholder="Nota 1" min="0" max="10" step="0.1">
+    <input type="number" id="nota2" placeholder="Nota 2" min="0" max="10" step="0.1">
+    <button id="adicionar">Adicionar Aluno</button>
+    <button id="limpar">Limpar Lista</button>
+  </div>
+
+  <!-- ===== TABELA ===== -->
+  <table id="tabelaAlunos">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Nota 1</th>
+        <th>Nota 2</th>
+        <th>Média</th>
+        <th>Situação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Linhas serão adicionadas dinamicamente -->
+    </tbody>
+  </table>
+
+  <script>
+    // ===== SELEÇÃO DOS ELEMENTOS =====
+    const nomeInput = document.getElementById('nome');
+    const nota1Input = document.getElementById('nota1');
+    const nota2Input = document.getElementById('nota2');
+    const tabela = document.querySelector('#tabelaAlunos tbody');
+    const btnAdicionar = document.getElementById('adicionar');
+    const btnLimpar = document.getElementById('limpar');
+
+    // ===== FUNÇÃO: ADICIONAR ALUNO =====
+    btnAdicionar.addEventListener('click', () => {
+      const nome = nomeInput.value.trim();       // Pega o nome do aluno
+      const nota1 = parseFloat(nota1Input.value); // Converte nota1 para número
+      const nota2 = parseFloat(nota2Input.value); // Converte nota2 para número
+
+      // Validação básica dos campos
+      if (!nome || isNaN(nota1) || isNaN(nota2)) {
+        alert('Preencha todos os campos corretamente!');
+        return;
+      }
+
+      // Calcula a média
+      const media = ((nota1 + nota2) / 2).toFixed(2);
+      const situacao = media >= 7 ? 'Aprovado' : 'Reprovado';
+
+      // Cria uma nova linha na tabela
+      const linha = document.createElement('tr');
+      linha.classList.add(situacao.toLowerCase()); // Define a cor pela classe CSS
+
+      // Insere o conteúdo da linha
+      linha.innerHTML = `
+        <td>${nome}</td>
+        <td>${nota1}</td>
+        <td>${nota2}</td>
+        <td>${media}</td>
+        <td>${situacao}</td>
+      `;
+
+      // Ao clicar em uma linha, o aluno é removido
+      linha.addEventListener('click', () => {
+        tabela.removeChild(linha);
+      });
+
+      // Adiciona a linha à tabela
+      tabela.appendChild(linha);
+
+      // Limpa os campos após adicionar
+      nomeInput.value = '';
+      nota1Input.value = '';
+      nota2Input.value = '';
+    });
+
+    // ===== FUNÇÃO: LIMPAR LISTA =====
+    btnLimpar.addEventListener('click', () => {
+      tabela.innerHTML = ''; // Apaga todas as linhas da tabela
+    });
+  </script>
+
+</body>
+</html>
