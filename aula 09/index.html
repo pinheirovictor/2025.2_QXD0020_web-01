@@ -1,0 +1,238 @@
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Despesas Pessoais</title>
+
+  <style>
+    /* ======== ESTILO GERAL ======== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #0066cc;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    /* ======== FORMULÁRIO ======== */
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: space-between;
+    }
+
+    form input, form select {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      flex: 1 1 180px;
+    }
+
+    form button {
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #004c99;
+    }
+
+    /* ======== TABELA ======== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+    }
+
+    th, td {
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e9f2ff;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .btn-excluir {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-excluir:hover {
+      background-color: #990000;
+    }
+
+    /* ======== TOTAL ======== */
+    #total {
+      font-weight: bold;
+      font-size: 16px;
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #f0f0f0;
+      color: #666;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Controle de Despesas Pessoais</h1>
+  </header>
+
+  <main>
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <form id="form-despesa">
+      <input type="text" id="descricao" placeholder="Descrição da despesa">
+      <input type="number" id="valor" placeholder="Valor (R$)" step="0.01" min="0">
+      <select id="categoria">
+        <option value="">Selecione a categoria</option>
+        <option value="Alimentação">Alimentação</option>
+        <option value="Transporte">Transporte</option>
+        <option value="Lazer">Lazer</option>
+        <option value="Educação">Educação</option>
+        <option value="Outros">Outros</option>
+      </select>
+      <button type="submit">Adicionar Despesa</button>
+    </form>
+
+    <!-- TABELA DE DESPESAS -->
+    <table id="tabela-despesas">
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Categoria</th>
+          <th>Valor (R$)</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Linhas geradas dinamicamente -->
+      </tbody>
+    </table>
+
+    <!-- TOTAL GERAL -->
+    <div id="total">Total: R$ 0,00</div>
+  </main>
+
+  <footer>
+    Desenvolvido por Victor Pinheiro – UFC Quixadá
+  </footer>
+
+  <script>
+    // ======== VARIÁVEIS PRINCIPAIS ========
+    const form = document.getElementById('form-despesa');
+    const tabela = document.querySelector('#tabela-despesas tbody');
+    const totalEl = document.getElementById('total');
+
+    // Array que armazenará as despesas
+    let despesas = [];
+
+    // ======== FUNÇÃO PARA ATUALIZAR A TABELA ========
+    function atualizarTabela() {
+      tabela.innerHTML = ''; // limpa a tabela
+
+      let total = 0;
+      despesas.forEach((d, index) => {
+        const linha = document.createElement('tr');
+        linha.innerHTML = `
+          <td>${d.descricao}</td>
+          <td>${d.categoria}</td>
+          <td>R$ ${d.valor.toFixed(2)}</td>
+          <td><button class="btn-excluir" onclick="removerDespesa(${index})">Excluir</button></td>
+        `;
+        tabela.appendChild(linha);
+        total += d.valor;
+      });
+
+      totalEl.textContent = `Total: R$ ${total.toFixed(2)}`;
+    }
+
+    // ======== FUNÇÃO PARA REMOVER DESPESA ========
+    function removerDespesa(index) {
+      despesas.splice(index, 1); // remove pelo índice
+      atualizarTabela();
+    }
+
+    // ======== EVENTO DE ENVIO DO FORMULÁRIO ========
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // evita recarregar a página
+
+      const descricao = document.getElementById('descricao').value.trim();
+      const valor = parseFloat(document.getElementById('valor').value);
+      const categoria = document.getElementById('categoria').value;
+
+      // Validação simples
+      if (!descricao || isNaN(valor) || !categoria) {
+        alert('Preencha todos os campos corretamente!');
+        return;
+      }
+
+      // Cria um objeto despesa
+      const novaDespesa = { descricao, valor, categoria };
+      despesas.push(novaDespesa);
+
+      // Limpa os campos
+      form.reset();
+
+      // Atualiza a tabela e o total
+      atualizarTabela();
+    });
+  </script>
+
+</body>
+</html>
