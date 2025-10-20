@@ -1,0 +1,60 @@
+/* ======== ESTILO GERAL DA PÁGINA ======== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background-color: #f7f7f7;
+}
+
+h2, h3 {
+  color: #333;
+}
+
+/* ======== CAMPOS DE ENTRADA ======== */
+input {
+  margin: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ======== BOTÕES ======== */
+button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* ======== LISTA DE ITENS ======== */
+ul {
+  margin-top: 15px;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 5px 0;
+  padding: 8px;
+  background: #e9ffe9;
+  border: 1px solid #b2d8b2;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+li:hover {
+  background: #d6f5d6;
+}
+
+/* ======== TOTAL ======== */
+#total {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #222;
+}

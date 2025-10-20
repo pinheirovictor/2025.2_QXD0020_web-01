@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Compras</title>
+  <!-- Importa o CSS externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h2>Lista de Compras</h2>
+
+  <!-- Campos de entrada -->
+  <input id="nome" type="text" placeholder="Nome do item">
+  <input id="quantidade" type="number" placeholder="Quantidade">
+  <input id="preco" type="number" placeholder="Preço">
+
+  <br>
+  <!-- Botões de ação -->
+  <button id="adicionar">Adicionar Item</button>
+  <button id="calcular">Calcular Total</button>
+  <button id="limpar">Limpar Lista</button>
+
+  <!-- Lista de compras -->
+  <ul id="lista"></ul>
+
+  <!-- Total da compra -->
+  <h3 id="total">Total: R$ 0.00</h3>
+
+  <!-- Importa o JavaScript externo -->
+  <script src="script.js"></script>
+</body>
+</html>
