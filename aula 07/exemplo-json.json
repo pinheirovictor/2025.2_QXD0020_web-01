@@ -1,0 +1,9 @@
+{
+  "nome": "Maria",
+  "idade": 25,
+  "ativo": true,
+  "enderecos": [
+    {"cidade": "Fortaleza", "estado": "CE"},
+    {"cidade": "Quixadá", "estado": "CE"}
+  ]
+}
