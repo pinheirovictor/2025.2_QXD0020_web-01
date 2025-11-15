@@ -1,0 +1,181 @@
+/* ============================
+   ESTILO GERAL
+============================ */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f8f9fa;
+  color: #222;
+}
+
+/* Container principal da página */
+.page-container {
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+/* ============================
+   HEADER
+============================ */
+header {
+  background: #0f2a47;
+  color: white;
+  padding: 22px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+header nav a {
+  color: white;
+  margin-left: 30px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+header nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+header nav a:hover {
+  opacity: 0.8;
+}
+
+
+/* ============================
+   TÍTULOS
+============================ */
+h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+
+/* ============================
+   INPUTS E SELECTS
+============================ */
+input, select {
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #0f2a47;
+}
+
+
+/* ============================
+   BOTÕES
+============================ */
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  background: #0f2a47;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #14385f;
+}
+
+
+/* ============================
+   TABELA
+============================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th {
+  text-align: left;
+  padding: 14px;
+  background: #e9ecef;
+  font-weight: bold;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Linhas alternadas */
+.linha-par {
+  background: #f8f9fa;
+}
+
+
+/* ============================
+   MODAL
+============================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: white;
+  border-radius: 8px;
+  max-width: 600px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.modal-box h2 {
+  margin-top: 0;
+}
+
+.modal-box button {
+  margin-top: 20px;
+}
+
+
+/* ============================
+   RESPONSIVIDADE
+============================ */
+@media (max-width: 750px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  tr {
+    margin-bottom: 10px;
+  }
+
+  td {
+    border: none;
+    padding: 8px 0;
+  }
+}
