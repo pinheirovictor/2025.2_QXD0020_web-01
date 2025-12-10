@@ -1,4 +1,3 @@
-📄 README.md (COMPLETO – prontinho para usar no GitHub)
 # 🏪 E-Commerce API – FastAPI + SQLModel + OAuth2 + JWT + RBAC
 
 Este projeto implementa uma API completa e didática de e-commerce usando **FastAPI**, **SQLModel**, **OAuth2 com JWT**, **autorização baseada em papéis (RBAC)** e banco de dados SQLite.
