@@ -1,0 +1,83 @@
+.topmenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 24px;
+  margin-bottom: 24px;
+
+  background-color: #111;
+  color: #fff;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.topmenu-logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.topmenu-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.topmenu-nav a {
+  color: #ddd;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.topmenu-nav a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.topmenu-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topmenu-email {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.logout-btn {
+  background-color: #e50914;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #b20710;
+}
+
+/* ------------------------
+   Responsividade
+------------------------ */
+
+@media (max-width: 768px) {
+  .topmenu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .topmenu-nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .topmenu-user {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

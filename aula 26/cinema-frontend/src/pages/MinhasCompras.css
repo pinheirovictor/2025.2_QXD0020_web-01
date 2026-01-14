@@ -1,0 +1,64 @@
+.compras-container {
+  min-height: calc(100vh - 80px);
+  background-color: #111;
+  color: white;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compras-container h2 {
+  margin-bottom: 12px;
+}
+
+.voltar-link {
+  margin-bottom: 24px;
+  color: #e50914;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.voltar-link:hover {
+  text-decoration: underline;
+}
+
+.compras-vazio {
+  color: #aaa;
+  margin-top: 40px;
+}
+
+.compras-lista {
+  width: 100%;
+  max-width: 500px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.compra-card {
+  background-color: #1c1c1c;
+  padding: 16px;
+  border-radius: 6px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.compra-card p {
+  margin: 6px 0;
+  color: #ddd;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .compras-container {
+    padding: 16px;
+  }
+
+  .compras-lista {
+    width: 100%;
+  }
+}

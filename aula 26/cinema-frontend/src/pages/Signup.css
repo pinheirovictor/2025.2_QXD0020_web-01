@@ -1,0 +1,121 @@
+.signup-container {
+  min-height: 100vh;
+  background-color: #111;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-card {
+  background-color: #1c1c1c;
+  padding: 32px;
+  width: 100%;
+  max-width: 380px;
+
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  color: white;
+}
+
+.signup-card h2 {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.signup-subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 12px;
+}
+
+.signup-card input {
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+
+  background-color: #333;
+  color: white;
+}
+
+.signup-card input::placeholder {
+  color: #aaa;
+}
+
+.signup-card button {
+  margin-top: 8px;
+  padding: 10px;
+
+  background-color: #e50914;
+  border: none;
+  border-radius: 4px;
+
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+}
+
+.signup-card button:hover {
+  background-color: #b20710;
+}
+
+.signup-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.signup-footer a {
+  color: #e50914;
+  text-decoration: none;
+}
+
+.signup-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Toast reaproveitado do Login */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  padding: 12px 20px;
+  border-radius: 6px;
+
+  color: white;
+  font-weight: 500;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+
+  animation: slideIn 0.3s ease;
+}
+
+.toast.success {
+  background-color: #2e7d32;
+}
+
+.toast.error {
+  background-color: #c62828;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

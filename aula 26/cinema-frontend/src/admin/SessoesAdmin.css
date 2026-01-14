@@ -1,0 +1,89 @@
+.admin-container {
+  padding: 24px;
+  background-color: #111;
+  min-height: calc(100vh - 80px);
+}
+
+/* Cabeçalho */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 12px;
+}
+
+.admin-header h2 {
+  color: white;
+}
+
+/* Botão principal */
+.criar-sessao-btn {
+  padding: 10px 16px;
+  background-color: #e50914;
+  border-radius: 4px;
+
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+
+  transition: background-color 0.2s;
+}
+
+.criar-sessao-btn:hover {
+  background-color: #b20710;
+}
+
+/* Estado vazio */
+.admin-vazio {
+  color: #ccc;
+  text-align: center;
+}
+
+/* Lista em grid */
+.admin-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* Card */
+.admin-card {
+  background-color: #1c1c1c;
+  color: white;
+
+  padding: 20px;
+  border-radius: 8px;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-card h3 {
+  margin-bottom: 4px;
+}
+
+.admin-info {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.admin-disponiveis {
+  color: #fbc02d;
+  font-weight: bold;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .admin-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .criar-sessao-btn {
+    text-align: center;
+  }
+}

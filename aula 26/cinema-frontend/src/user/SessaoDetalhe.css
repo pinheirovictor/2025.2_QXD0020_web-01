@@ -1,0 +1,100 @@
+.sessao-container {
+  min-height: calc(100vh - 80px);
+  background-color: #111;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+}
+
+.sessao-card {
+  background-color: #1c1c1c;
+  color: white;
+
+  width: 100%;
+  max-width: 600px;
+  padding: 32px;
+
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sessao-card h2 {
+  text-align: center;
+}
+
+.sessao-info {
+  text-align: center;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.sessao-disponiveis {
+  text-align: center;
+  font-weight: bold;
+  color: #e50914;
+}
+
+.assentos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.assento {
+  padding: 10px;
+  background-color: #333;
+  color: white;
+
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+}
+
+.assento:hover {
+  background-color: #555;
+}
+
+.assento.selecionado {
+  background-color: #2e7d32;
+}
+
+.comprar-btn {
+  margin-top: 8px;
+  padding: 12px;
+
+  background-color: #e50914;
+  border: none;
+  border-radius: 4px;
+
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+}
+
+.comprar-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.comprar-btn:hover:not(:disabled) {
+  background-color: #b20710;
+}
+
+
+@media (max-width: 600px) {
+  .sessao-card {
+    padding: 24px;
+  }
+}
